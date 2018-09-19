@@ -9,6 +9,7 @@
     "@types/react-input-mask": "^2.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-ga": "^2.5.3",
     "react-scripts": "1.1.5",
     "react-toastify": "^4.3.1"
   },

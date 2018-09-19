@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -88,6 +89,7 @@ class App extends React.Component {
   }
 
   onServerRespond = (res) => {
+    const { targetEmail } = this.state;
     const toastOptions = {
       autoClose: 5000,
       position: toast.POSITION.BOTTOM_CENTER,
@@ -95,9 +97,17 @@ class App extends React.Component {
 
     this.setState({ isFetching: false });
     if (res.success) {
+      ReactGA.event({
+        target: targetEmail,
+        success: true,
+      });
       toast('You have turned off your friend\'s ios device ! GG !');
     }
     else {
+      ReactGA.event({
+        target: targetEmail,
+        success: false,
+      });
       toast('Oups ! We have problem verify your friend\'s email !');
     }
   }
