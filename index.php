@@ -1,5 +1,5 @@
 <?php
-  ob_start(); 
+  ob_start();
 ?>
 
 <!DOCTYPE html>
@@ -22,15 +22,15 @@
 
   $body = ob_get_clean();
 
-  
+
   if (!isset($_GET['email'])) {
     echo json_encode(array('success' => false));
-    return;
+    exit;
   }
 
   $subject = '😉';
   if (isset($_GET['subject']) && $_GET['subject'] != '') {
-    $subject = $_GET['subject']
+    $subject = $_GET['subject'];
   }
 
   $to = $_GET['email'];
@@ -43,4 +43,6 @@
   else {
     echo json_encode(array('success' => true));
   }
+
+  exit;
 ?>
